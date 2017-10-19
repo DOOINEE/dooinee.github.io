@@ -1,0 +1,309 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta content="text/html; charset=euc-kr">
+<title>MASIZZUNG</title>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" >
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumpenscript.css" >
+<script type="text/javascript">
+ var stmnLEFT = 20; // 오른쪽 여백
+ var stmnGAP1 = 5; // 위쪽 여백
+ var stmnGAP2 = 150; // 스크롤시 브라우저 위쪽과 떨어지는 거리
+ var stmnBASE = 150; // 스크롤 시작위치
+ var stmnActivateSpeed = 35; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+ var stmnScrollSpeed = 20; //스크롤 속도 (클수록 느림)
+ var stmnTimer;
+
+ function RefreshStaticMenu() {
+  var stmnStartPoint, stmnEndPoint;
+  stmnStartPoint = parseInt(document.getElementById('STATICMENU').style.top, 10);
+  stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2;
+  if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1;
+  if (stmnStartPoint != stmnEndPoint) {
+   stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 );
+   document.getElementById('STATICMENU').style.top = parseInt(document.getElementById('STATICMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px';
+   stmnRefreshTimer = stmnScrollSpeed;
+   }
+  stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed);
+  }
+ function InitializeStaticMenu() {
+  document.getElementById('STATICMENU').style.left = stmnLEFT + 'px';  //처음에 오른쪽에 위치. left로 바꿔도.
+  document.getElementById('STATICMENU').style.top = document.body.scrollTop + stmnBASE + 'px';
+  RefreshStaticMenu();
+  }
+
+
+</script>
+
+<style>
+    #STATICMENU { margin: 0pt; padding: 0pt;  position: absolute; left: 0px; top: 0px;}
+
+    div#wapper {
+        width: 100%;
+        min-height: 300px;
+        margin: 0 auto;
+    }
+    header, footer, nav, aside, section {
+        <!--border: 1px solid #999;-->
+        margin: 5px;
+        padding: 0 5px;
+    }
+    header {
+        background-color: white;
+        font-family:"Nanum Pen Script";
+        font-size: 43pt;
+        font-weight:bold;
+        text-align:center;
+    }
+    section, aside {
+        float: left;
+        height: 400px;
+    }
+    nav {
+        background-color: white;
+        text-align:center;
+    }
+    section {
+        background-color: white;
+        width: 840px;
+        padding: 0 80px;
+        font-family:"Jeju Gothic",serif;
+    }
+    aside {
+        background-color: white;
+        width: 150px;
+    }
+    footer {
+        height: 50px;
+        background-color: #105B63;
+        position: relatiev;
+        clear: both;
+
+    }
+    ul {
+      font-family:"Jeju Gothic",serif;
+      list-style:none;
+      border-top:1px solid #105B63; border-bottom: 1px solid #105B63;
+      padding:10px 0; font-size: 13pt;
+
+    }
+    ul li {
+      display:inline;
+      letter-spacing:2px;
+      padding:0 50px;
+
+    }
+    ul li a { text-decoration:none; color:black;padding: 8px 5px;}
+    ul li a:hover {font-weight:bold;
+      color:  #D7DADB;
+      <!--border-bottom:2px solid  #D7DADB;-->
+    }
+
+
+  tbody {
+  background: #ffffff;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.4em;
+  font-family: tahoma, arial, sans-serif;
+  font-size: 80%;
+  }
+table {
+
+  width: 90%;
+  <!--margin: auto;-->
+  background: #FFFFFF;
+  border: 1px solid #333333;
+  border-collapse: collapse;
+}
+td, th {
+  border: 1px solid #333333;
+  padding: 6px 16px;
+  text-align: left;
+}
+th {
+  background: #EEEEEE;
+}
+b {
+	padding: 10px;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	display: inline-block;
+
+	border-right: 30px solid transparent;
+	border-bottom: 30px solid #4c4c4c;
+
+	height: 0;
+	line-height: 50px;
+}
+div#s {
+     border: 1px solid #4c4c4c;
+     border-top: 3px solid #4c4c4c;
+     padding: 20px;
+     text-align:left;
+     width:700px;
+}
+body {
+    font-family: tahoma, arial, sans-serif;
+}
+
+
+
+
+
+</style>
+
+</head>
+<body onload="InitializeStaticMenu();">
+
+    <div id="wapper">
+
+      <header>
+        <img border="0" src="gunpo.png" width="60" height="40" align="center" vspace="10">
+        MASIZZUNG &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </header>
+
+
+        <nav>
+          <ul>
+            <li><a herf="Intro.html" target="_blank">Intro</a></li>
+            <li><a herf="#">Restaurants</a></li>
+            <li><a herf="#">Best</a></li>
+            <li><a herf="#">Suggestion</a></li>
+          </ul>
+        </nav>
+
+        <aside>
+          <p id="STATICMENU">
+            <img border="0" src="food3.jpg" width="150" height="150" ></br>
+            <img border="0" src="food5.jpg" width="150" height="150" ></br>
+            <img border="0" src="food4.jpg" width="150" height="150" ></br>
+            <img border="0" src="f8.jpg" width="150" height="150" ></br>
+            <img border="0" src="food7.jpg" width="150" height="150" ></br>
+          </p>
+        </aside>
+
+        <section>
+          <b>홈페이지 소개</b>
+        	<div id="s" style="text-align:center;">
+            <span style="font-family:Nanum Pen Script; font-size:33pt; font-weight:bold;">본격! 군포 <c style="color:red;">먹방</c>일지</span>
+
+            <p>
+
+            </p>
+          </div>
+<br/><br/>
+          <b>군포 소개</b>
+        	<div id="s" style="border: 0 solid #4c4c4c; border-top: 3px solid #4c4c4c;">
+            <h3>경기도 군포시</h3>
+            <p>
+              안녕하세요. 군포에 산지 어느덧 1년이 되었군요.<br/>
+              군포에 산다고 말하면 '군포에 도로는 있느냐'고 물어보는 친구들이 많습니다.<br/><br/>
+              군포는 말이죠,<br/>
+            </p>
+            <p >
+            <a href="http://map.naver.com/?query=6rWw7Y%2Bs&searchCoord=&menu=location&tab=1&lng=6c24c8fcdf04f49153cd87e6b43b260f&__fromRestorer=true&mapMode=0&mpx=37.3296198%2C126.9354296%3AZ11%3A0.0198641%2C0.0087388&lat=ca4ee6fe8e5037607d63e22cd8feb418&dlevel=5&enc=b64" target="_blank"><img src="http://prt.map.naver.com/mashupmap/print?key=p1508311820171_-1386123300" width="480" height="320" /></a>
+            </p>
+            <p>
+              안산의 오른쪽 위, 수원의 왼쪽 위에 위치하고 있습니다.
+            </p>
+            <img border="0" src="도로.jpg" width="600" height="250" ></br>
+            <p>
+              물론 '도로'가 있고요,
+            </p>
+            <img border="0" src="삐까번쩍.jpg" width="650" height="300" ></br>
+            <p>
+              삐까번쩍한 건물들도 있습니다.
+            </p>
+          </div>
+<br/><br/>
+          <b>마을 소개</b>
+          <div id="s" style="border: 0 solid #4c4c4c; border-top: 3px solid #4c4c4c;">
+          <h3>군포시 부곡동 삼성로 20번길</h3>
+          <p>
+            그 중에서도 저는 '삼성로 20번길'라는 마을에 살고 있습니다.
+            '삼성로'는 <span style="color:red;">왼쪽</span>의 삼성마을 아파트 단지 때문에 붙여진 이름입니다만,
+            저는 <span style="color:red;">오른쪽</span>의 오피스텔촌에 살고 있습니다.
+          </p>
+          <iframe src="http://map.naver.com/outpage/showStreetPanorama.nhn?id=%2Fd2z6dKYyyrEcXwWdFS3qA%3D%3D&type=3&pan=-42.99&tilt=16.64&fov=120&sky=on&poi=off&pointX=126.9339123&pointY=37.3365586&pointZ=0" width="650" height="340"></iframe>
+          </div>
+<br/><br/>
+
+          <b>교통편</b>
+        	<div id="s" style="border: 0 solid #4c4c4c; border-top: 3px solid #4c4c4c;">
+            <table >
+            <thead style="font-family: tahoma, arial, sans-serif; font-size: 80%;">
+                <tr>
+                    <th scope="col">교통편</th>
+                    <th scope="col">정류장&호선</th>
+                    <th scope="col">번호&역</th>
+                    <th scope="col">배차간격(분)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row" rowspan="7">버스</th>
+                    <td rowspan="3">신기초등학교정문</td>
+                    <td>6-1</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>12</td>
+                </tr>
+                <tr>
+                  <td>12</td>
+                  <td>15</td>
+                </tr>
+                <tr>
+                    <td rowspan="4">복합화물터미널후문입구</td>
+                    <td>3-1</td>
+                    <td>15~20</td>
+                </tr>
+                <tr>
+                    <td>60</td>
+                    <td>8~12</td>
+                </tr>
+                <tr>
+                    <td>542</td>
+                    <td>20~28</td>
+                </tr>
+                <tr>
+                    <td>5531</td>
+                    <td>4~6</td>
+                </tr>
+                <tr>
+                    <th scope="row" rowspan="3">지하철</th>
+                    <td rowspan="2">1호선</td>
+                    <td>당정역</td>
+                    <td rowspan="2">12</td>
+                </tr>
+                <tr>
+                    <td>군포역</td>
+                </tr>
+                <tr>
+                    <td>4호선</td>
+                    <td>수리산역</td>
+                    <td>10</td>
+                </tr>
+            </tbody>
+        </table>
+
+	        </div>
+   </section>
+
+        <aside style="position: absolute; right: 20px; top: 150px; ">
+
+            <img border="0" src="food6.jpg" width="150" height="150" ></br>
+            <img border="0" src="f12.jpg" width="150" height="150" ></br>
+            <img border="0" src="f9.jpg" width="150" height="150" ></br>
+            <img border="0" src="f10.jpg" width="150" height="150" ></br>
+            <img border="0" src="f13.jpg" width="150" height="150" ></br>
+
+        </aside>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,314 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta content="text/html; charset=euc-kr">
+<title>MASIZZUNG</title>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" >
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumpenscript.css" >
+<script type="text/javascript">
+ var stmnLEFT = 20; // 오른쪽 여백
+ var stmnGAP1 = 5; // 위쪽 여백
+ var stmnGAP2 = 150; // 스크롤시 브라우저 위쪽과 떨어지는 거리
+ var stmnBASE = 150; // 스크롤 시작위치
+ var stmnActivateSpeed = 35; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+ var stmnScrollSpeed = 20; //스크롤 속도 (클수록 느림)
+ var stmnTimer;
+
+ function RefreshStaticMenu() {
+  var stmnStartPoint, stmnEndPoint;
+  stmnStartPoint = parseInt(document.getElementById('STATICMENU').style.top, 10);
+  stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2;
+  if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1;
+  if (stmnStartPoint != stmnEndPoint) {
+   stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 );
+   document.getElementById('STATICMENU').style.top = parseInt(document.getElementById('STATICMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px';
+   stmnRefreshTimer = stmnScrollSpeed;
+   }
+  stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed);
+  }
+ function InitializeStaticMenu() {
+  document.getElementById('STATICMENU').style.left = stmnLEFT + 'px';  //처음에 오른쪽에 위치. left로 바꿔도.
+  document.getElementById('STATICMENU').style.top = document.body.scrollTop + stmnBASE + 'px';
+  RefreshStaticMenu();
+  }
+
+
+</script>
+
+<style>
+    #STATICMENU { margin: 0pt; padding: 0pt;  position: absolute; left: 0px; top: 0px;}
+
+    div#wapper {
+        width: 100%;
+        min-height: 300px;
+        margin: 0 auto;
+    }
+    header, footer, nav, aside, section {
+        <!--border: 1px solid #999;-->
+        margin: 5px;
+        padding: 0 5px;
+    }
+    header {
+        background-color: white;
+        font-family:"Nanum Pen Script";
+        font-size: 43pt;
+        font-weight:bold;
+        text-align:center;
+    }
+    section, aside {
+        float: left;
+        height: 400px;
+    }
+    nav {
+        background-color: white;
+        text-align:center;
+    }
+    section {
+        background-color: white;
+        width: 840px;
+        padding: 0 80px;
+        font-family:"Jeju Gothic",serif;
+    }
+    aside {
+        background-color: white;
+        width: 150px;
+    }
+    footer {
+        height: 50px;
+        background-color: #105B63;
+        position: relatiev;
+        clear: both;
+
+    }
+    ul#nav {
+      font-family:"Jeju Gothic",serif;
+      list-style:none;
+      border-top:1px solid #105B63; border-bottom: 1px solid #105B63;
+      padding:10px 0; font-size: 13pt;
+
+    }
+    ul#nav li {
+      display:inline;
+      letter-spacing:2px;
+      padding:0 50px;
+
+    }
+    ul#nav li a { text-decoration:none; color:black;padding: 8px 5px;}
+    ul#nav li a:hover {font-weight:bold;
+      color:  #D7DADB;
+      <!--border-bottom:2px solid  #D7DADB;-->
+    }
+
+
+  tbody {
+  background: #ffffff;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.4em;
+  font-family: tahoma, arial, sans-serif;
+  font-size: 80%;
+  }
+table {
+
+  width: 90%;
+  <!--margin: auto;-->
+  background: #FFFFFF;
+  border: 1px solid #333333;
+  border-collapse: collapse;
+}
+td, th {
+  border: 1px solid #333333;
+  padding: 6px 16px;
+  text-align: left;
+}
+th {
+  background: #EEEEEE;
+}
+b {
+	padding: 10px;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	display: inline-block;
+
+	border-right: 30px solid transparent;
+	border-bottom: 30px solid #4c4c4c;
+
+	height: 0;
+	line-height: 50px;
+}
+div#s {
+     border: 1px solid #4c4c4c;
+     border-top: 3px solid #4c4c4c;
+     padding: 20px;
+     text-align:left;
+     width:700px;
+
+}
+body {
+    font-family: tahoma, arial, sans-serif;
+}
+#relative1 {
+  position:relative;
+  bottom: 218px;
+  left: 315px;
+}
+#relative2 {
+  position:static;
+  bottom: 1000px;
+  right: 10px;
+}
+
+
+
+
+</style>
+
+</head>
+<body onload="InitializeStaticMenu();">
+
+    <div id="wapper">
+
+      <header>
+        <img border="0" src="gunpo.png" width="60" height="40" align="center" vspace="10">
+        MASIZZUNG &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </header>
+
+
+        <nav>
+          <ul id="nav">
+            <li><a herf="Intro.html" target="_blank">Intro</a></li>
+            <li><a herf="#">Restaurants</a></li>
+            <li><a herf="#">Best</a></li>
+            <li><a herf="#">Suggestion</a></li>
+          </ul>
+        </nav>
+
+        <aside>
+          <p id="STATICMENU">
+            <img border="0" src="food3.jpg" width="150" height="150" ></br>
+            <img border="0" src="food5.jpg" width="150" height="150" ></br>
+            <img border="0" src="food4.jpg" width="150" height="150" ></br>
+            <img border="0" src="f8.jpg" width="150" height="150" ></br>
+            <img border="0" src="food7.jpg" width="150" height="150" ></br>
+          </p>
+        </aside>
+
+        <section>
+          <b> 바다회포차 </b>
+          <div id="s">
+            <p>
+              <img border="0" src="바다회포차.png" width="630" height="330"  >
+                <li><span style="font-weight:bold;">메뉴</span> : 광어or우럭 소(25,000) 중(35,000) 대(45,000) 모듬회(40,000) </li>
+                <li><span style="font-weight:bold;">맛평가</span> : <span style="color:red">★★★★★</span></li>
+                <li><span style="font-weight:bold;">위치</span> : 경기 군포시 삼성로8번길 4-5 드림시티 </li>
+                <li><span style= "font-weight:bold;">한줄평</span> : 고향의 맛, 포항이 내게 왔다!</li>
+            </p>
+          </div>
+
+          <b> 서서갈비 </b>
+          <div id="s">
+            <p>
+              <img border="0" src="서서갈비.png" width="640" height="340"  >
+                <li><span style="font-weight:bold;">메뉴</span> : 돼지갈비(7900) 돼지왕갈비(8900) </li>
+                <li><span style="font-weight:bold;">맛평가</span> : <span style="color:red">★★★★★</span></li>
+                <li><span style="font-weight:bold;">위치</span> : 경기 군포시 삼성로8번길 14 </li>
+                <li><span style= "font-weight:bold;">한줄평</span> : 양념갈비는 사랑입니다.</li>
+            </p>
+          </div>
+
+          <b> O'beut 샤브 </b>
+          <div id="s">
+            <p>
+              <img border="0" src="오븟샤브00.jpg" width="680" height="310"  >
+                <li><span style="font-weight:bold;">메뉴</span> :샤브샐러드바_점심(10900) </li>
+                <li><span style="font-weight:bold;">맛평가</span> : <span style="color:red">★★★★★</span></li>
+                <li><span style="font-weight:bold;">위치</span> : 경기 군포시 삼성로20번길 3-8 </li>
+                <li><span style= "font-weight:bold;">한줄평</span> : 샐러드바가 매우 만족스럽구나</li>
+            </p>
+          </div>
+          <b> 할매순대국밥 </b>
+          <div id="s">
+            <p>
+              <img border="0" src="순대국밥.png" width="690" height="320"  >
+
+                <li><span style="font-weight:bold;">메뉴</span> : 토종순대국밥(5천), 얼큰순대국밥(6천), 돼지국밥(7천)</li>
+                <li><span style="font-weight:bold;">맛평가</span> : <span style="color:red">★★★★</span></li>
+                <li><span style="font-weight:bold;">위치</span> : 경기도 군포시 삼성로 6 </li>
+                <li><span style= "font-weight:bold;">한줄평</span> : 돼지국밥만 10번째! </li>
+            </p>
+          </div>
+
+          <b> 김밥천국 </b>
+          <div id="s">
+            <p>
+              <img border="0" src="김밥1.jpg" width="630" height="400"  >
+                <li><span style="font-weight:bold;">메뉴</span> : 원조김밥(1,500원) 깻잎김밥(2,000원) 참치김밥(2,500원) 땡초김밥(2,500원) <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;치즈김밥(2,500원) 돈까스김밥(3,500원)</li>
+                <li><span style="font-weight:bold;">맛평가</span> : <span style="color:red">★★★</span></li>
+                <li><span style="font-weight:bold;">위치</span> : 경기 군포시 삼성로20번길 4-18 </li>
+                <li><span style= "font-weight:bold;">한줄평</span> : 싸고 다양한 메뉴! </li>
+            </p>
+          </div>
+
+          <b> 치킨영토 </b>
+          <div id="s">
+            <p>
+              <img border="0" src="치킨영토.png" width="650" height="340"  >
+                <li><span style="font-weight:bold;">메뉴</span> : 치토바베큐(16900) 마늘애간장(16900) 소금구이(16900) </li>
+                <li><span style="font-weight:bold;">맛평가</span> : <span style="color:red">★★★★</span></li>
+                <li><span style="font-weight:bold;">위치</span> : 경기 군포시 삼성로 5 </li>
+                <li><span style= "font-weight:bold;">한줄평</span> : 매웡ㅋ </li>
+            </p>
+          </div>
+
+          <b> 청년국물떡볶이 </b>
+          <div id="s">
+            <p>
+              <img border="0" src="청년.jpeg" width="640" height="400"  >
+                <li><span style="font-weight:bold;">메뉴</span> : 떡튀세트(5500) 커플세트(1만) 국물떡볶이(3000) 찹쌀순대(3000) </li>
+                <li><span style="font-weight:bold;">맛평가</span> : <span style="color:red">★★</span></li>
+                <li><span style="font-weight:bold;">위치</span> : 경기 군포시 삼성로8번길 10 </li>
+                <li><span style= "font-weight:bold;">한줄평</span> : 무난하다 </li>
+            </p>
+          </div>
+
+          <b> 24시 전주콩나물국밥 </b>
+          <div id="s">
+            <p>
+              <img border="0" src="콩나물.jpg" width="580" height="350"  >
+                <li><span style="font-weight:bold;">메뉴</span> : 콩나물국밥(3800) 김치문어콩나물국밥(4800) 만두(3000) </li>
+                <li><span style="font-weight:bold;">맛평가</span> : <span style="color:red">★★★★</span></li>
+                <li><span style="font-weight:bold;">위치</span> : 경기 군포시 삼성로 5 </li>
+                <li><span style= "font-weight:bold;">한줄평</span> : 숙취해소로 쵝오!</li>
+            </p>
+          </div>
+
+          <b> 야간얼큰우동 </b>
+          <div id="s">
+            <p>
+              <img border="0" src="야간얼큰.png" width="620" height="340"  >
+                <li><span style="font-weight:bold;">메뉴</span> : 즉석우동(5000) 오돌뼈+주먹밥(13000) </li>
+                <li><span style="font-weight:bold;">맛평가</span> : <span style="color:red">★★★★★</span></li>
+                <li><span style="font-weight:bold;">위치</span> : 경기 군포시 삼성로20번길 8-20 </li>
+                <li><span style= "font-weight:bold;">한줄평</span> : MSG 국물맛이 끝내줘요!</li>
+            </p>
+          </div>
+
+
+         </section>
+
+        <aside style="position: absolute; right: 20px; top: 150px; ">
+
+            <img border="0" src="food6.jpg" width="150" height="150" ></br>
+            <img border="0" src="f12.jpg" width="150" height="150" ></br>
+            <img border="0" src="f9.jpg" width="150" height="150" ></br>
+            <img border="0" src="f10.jpg" width="150" height="150" ></br>
+            <img border="0" src="f13.jpg" width="150" height="150" ></br>
+
+        </aside>
+
+    </div>
+</body>
+
+</html>

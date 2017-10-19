@@ -1,0 +1,210 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta content="text/html; charset=euc-kr">
+<title>MASIZZUNG</title>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/jejugothic.css" >
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/earlyaccess/nanumpenscript.css" >
+<script type="text/javascript">
+ var stmnLEFT = 20; // 오른쪽 여백
+ var stmnGAP1 = 5; // 위쪽 여백
+ var stmnGAP2 = 150; // 스크롤시 브라우저 위쪽과 떨어지는 거리
+ var stmnBASE = 150; // 스크롤 시작위치
+ var stmnActivateSpeed = 35; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
+ var stmnScrollSpeed = 20; //스크롤 속도 (클수록 느림)
+ var stmnTimer;
+
+ function RefreshStaticMenu() {
+  var stmnStartPoint, stmnEndPoint;
+  stmnStartPoint = parseInt(document.getElementById('STATICMENU').style.top, 10);
+  stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2;
+  if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1;
+  if (stmnStartPoint != stmnEndPoint) {
+   stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 );
+   document.getElementById('STATICMENU').style.top = parseInt(document.getElementById('STATICMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px';
+   stmnRefreshTimer = stmnScrollSpeed;
+   }
+  stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed);
+  }
+ function InitializeStaticMenu() {
+  document.getElementById('STATICMENU').style.left = stmnLEFT + 'px';  //처음에 오른쪽에 위치. left로 바꿔도.
+  document.getElementById('STATICMENU').style.top = document.body.scrollTop + stmnBASE + 'px';
+  RefreshStaticMenu();
+  }
+
+
+</script>
+
+<style>
+    #STATICMENU { margin: 0pt; padding: 0pt;  position: absolute; left: 0px; top: 0px;}
+
+    div#wapper {
+        width: 100%;
+        margin: 0 auto;
+        min-height: 300px;
+    }
+    header, footer, nav, aside, section {
+        <!--border: 1px solid #999;-->
+        margin: 5px;
+        padding: 0 5px;
+    }
+    header {
+        background-color: white;
+        font-family:"Nanum Pen Script";
+        font-size: 43pt;
+        font-weight:bold;
+        text-align:center;
+    }
+    section, aside {
+        float: left;
+        height: auto;
+    }
+    nav {
+        background-color: white;
+        text-align:center;
+    }
+    section {
+        background-color: white;
+        padding: 0 80px;
+        width:740px;
+        font-family:"Jeju Gothic",serif;
+        text-align:center;
+        padding-bottom:10px;
+    }
+    aside {
+        background-color: white;
+        width: 150px;
+        height:400px;
+    }
+    footer {
+        height: 30px;
+        background-color: #105B63;
+        position: relatiev;
+        clear: both;
+    }
+    ul {
+      font-family:"Jeju Gothic",serif;
+      list-style:none;
+      border-top:1px solid #105B63; border-bottom: 1px solid #105B63;
+      padding:10px 0; font-size: 13pt;
+
+    }
+    ul li {
+      display:inline;
+      letter-spacing:2px;
+      padding:0 50px;
+
+    }
+    ul li a { text-decoration:none; color:black;padding: 8px 5px;}
+    ul li a:hover {font-weight:bold;
+      color:  #D7DADB;
+      <!--border-bottom:2px solid  #D7DADB;-->
+    }
+
+
+  tbody {
+  background: #ffffff;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.4em;
+  font-family: tahoma, arial, sans-serif;
+  font-size: 80%;
+  }
+table {
+
+  width: 90%;
+  <!--margin: auto;-->
+  background: #FFFFFF;
+  border: 1px solid #333333;
+  border-collapse: collapse;
+}
+td, th {
+  border: 1px solid #333333;
+  padding: 6px 16px;
+  text-align: left;
+}
+th {
+  background: #EEEEEE;
+}
+b {
+	padding: 10px;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	display: inline-block;
+
+	border-right: 30px solid transparent;
+	border-bottom: 30px solid #4c4c4c;
+
+	height: 0;
+	line-height: 50px;
+}
+div#s {
+     border: 1px solid #4c4c4c;
+     border-top: 3px solid #4c4c4c;
+     padding: 20px;
+     text-align:left;
+     width:700px;
+}
+body {
+    font-family: tahoma, arial, sans-serif;
+}
+
+
+
+
+
+</style>
+
+</head>
+<body onload="InitializeStaticMenu();">
+
+    <div id="wapper">
+      <nav>
+        <ul>
+          <li><a herf="Intro.html" target="_blank">Intro</a></li>
+          <li><a herf="#">Restaurants</a></li>
+          <li><a herf="#">Best</a></li>
+          <li><a herf="#">Suggestion</a></li>
+        </ul>
+      </nav>
+
+      <header>
+        MASIZZUNG
+      </header>
+
+
+
+
+        <aside>
+
+        </aside>
+
+
+        <section>
+
+          <img border="0" src="food3.jpg" width="250" height="150" >
+          <img border="0" src="food5.jpg" width="150" height="150" >
+          <img border="0" src="food4.jpg" width="200" height="150" ></br>
+          <img border="0" src="f8.jpg" width="200" height="150" >
+          <img border="0" src="f13.jpg" width="250" height="150" >
+          <img border="0" src="food6.jpg" width="150" height="150" ></br>
+          <img border="0" src="f12.jpg" width="150" height="150" >
+          <img border="0" src="f9.jpg" width="200" height="150" >
+          <img border="0" src="f10.jpg" width="250" height="150" ></br>
+
+         </section>
+
+         <aside >
+
+         </aside>
+
+         <footer>
+
+         </footer>
+
+
+    </div>
+</body>
+
+</html>
